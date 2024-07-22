@@ -1,0 +1,11 @@
+--- a/openal-src/core/device.h	2024-07-23 01:28:21.056061980 +0200
++++ b/openal-src/core/device.h	2024-07-23 01:25:58.290154339 +0200
+@@ -37,7 +37,7 @@
+ 
+ #define MIN_OUTPUT_RATE      8000
+ #define MAX_OUTPUT_RATE      192000
+-#define DEFAULT_OUTPUT_RATE  48000
++#define DEFAULT_OUTPUT_RATE  44100
+ 
+ #define DEFAULT_UPDATE_SIZE  960 /* 20ms */
+ #define DEFAULT_NUM_UPDATES  3

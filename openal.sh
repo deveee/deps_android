@@ -11,6 +11,7 @@ mkdir -p deps; cd deps
 
 if [ ! -d openal-src ]; then
 	git clone -b $OPENAL_VERSION --depth 1 https://github.com/kcat/openal-soft openal-src
+	patch -p1 < ../openal.diff
 fi
 
 cd openal-src/build
