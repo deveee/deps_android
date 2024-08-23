@@ -6,7 +6,12 @@ ARCHS=("armv7" "arm64" "x86_64")
 for ARCH in "${ARCHS[@]}"; do
 echo "Building for ARCH: $ARCH"
 
-sed -i '' '/^arch/d' local.properties
+UNAME="$(uname -s)"
+case "${UNAME}" in
+    Darwin*)    sed -i '' '/^arch/d' local.properties;;
+    *)          sed -i '/^arch/d' local.properties;;
+esac
+
 echo "arch = $ARCH" >> local.properties
 
 # Set NDK path
@@ -33,18 +38,18 @@ mkdir deps
 
 # Build libs
 
-sh gettext.sh
-sh leveldb.sh
-#sh luajit.sh
-sh libjpeg.sh
-sh libpng.sh
-sh freetype.sh
-sh SDL2.sh
-sh irrlicht.sh
-sh openal.sh
-sh mbedtls.sh
-sh libcurl.sh
-sh vorbis.sh
+./gettext.sh
+./leveldb.sh
+./luajit.sh
+./libjpeg.sh
+./libpng.sh
+./freetype.sh
+./SDL2.sh
+./irrlicht.sh
+./openal.sh
+./mbedtls.sh
+./libcurl.sh
+./vorbis.sh
 
 echo "Done building for $ARCH!"
 done
