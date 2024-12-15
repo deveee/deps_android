@@ -14,7 +14,7 @@ fi
 cd openssl-src
 
 PATH=$TOOLCHAIN/bin:$PATH
-./Configure $TARGET_NAME no-tests no-shared
+./Configure $TARGET_NAME no-tests no-shared -U__ANDROID_API__ -D__ANDROID_API__=$API
 make -j
 
 # update `include` folder
