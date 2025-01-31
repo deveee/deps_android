@@ -10,6 +10,9 @@ mkdir -p deps; cd deps
 
 cd irrlicht-src/source/Irrlicht/Android-SDL2
 
+CFLAGS="-Ofast -D__ANDROID_MIN_SDK_VERSION__=$API"
+CXXFLAGS="$CFLAGS -fexceptions -frtti"
+
 export SDL2_PATH="$OUTPUT_PATH/sdl2/"
 $ANDROID_NDK/ndk-build -j \
 	NDEBUG=1 \
