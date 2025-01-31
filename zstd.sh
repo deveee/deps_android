@@ -13,6 +13,8 @@ if [ ! -d zstd-src ]; then
 	fi
 	tar -xzf zstd-v$ZSTD_VERSION.tar.gz
 	mv zstd-$ZSTD_VERSION zstd-src
+	sed -i s/' __attribute__ ((visibility ("default")))'//g zstd-src/lib/zstd.h
+	sed -i s/' __attribute__ ((visibility ("default")))'//g zstd-src/lib/zstd_errors.h
 fi
 
 mkdir -p zstd-src/build/cmake/builddir

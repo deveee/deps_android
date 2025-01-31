@@ -13,6 +13,7 @@ if [ ! -d freetype-src ]; then
 	fi
 	tar -xJf freetype-$FREETYPE_VERSION.tar.xz
 	mv freetype-$FREETYPE_VERSION freetype-src
+	sed -i s/'__attribute__(( visibility( "default" ) ))'//g freetype-src/include/freetype/config/public-macros.h
 	mkdir freetype-src/build
 fi
 
