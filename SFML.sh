@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-SFML_VERSION=2.6.1
+SFML_VERSION=3.0.1
 
 . ./sdk.sh
 
@@ -13,7 +13,7 @@ if [ ! -d sfml-src ]; then
 	fi
 	tar -xzf $SFML_VERSION.tar.gz
 	mv SFML-$SFML_VERSION sfml-src
-	sed -i 's/set(BUILD_SHARED_LIBS TRUE)/set(BUILD_SHARED_LIBS FALSE)/g' sfml-src/CMakeLists.txt
+	#sed -i 's/set(BUILD_SHARED_LIBS TRUE)/set(BUILD_SHARED_LIBS FALSE)/g' sfml-src/CMakeLists.txt
 fi
 
 cd sfml-src
@@ -37,6 +37,7 @@ rm -rf ../../../output/sfml/include/
 cp -r ../include ../../../output/sfml/include
 # update lib
 rm -rf ../../../output/sfml/lib/$TARGET_ABI/*
-cp -r lib/*.a ../../../output/sfml/lib/$TARGET_ABI/
+cp -r lib/*.so ../../../output/sfml/lib/$TARGET_ABI/
+cp -r lib/libsfml-main.a ../../../output/sfml/lib/$TARGET_ABI/
 
 echo "SFML build successful"
